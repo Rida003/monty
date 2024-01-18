@@ -51,3 +51,62 @@ void _pall(stack_t **stack, unsigned int n)
 	}
 }
 
+/**
+ * _swap - swaps the data in two nodes
+ * @stack: pointer to a stack_t
+ * @line_number: line number
+ */
+void _swap(stack_t **stack, unsigned int line_number)
+{
+	int store = 0;
+
+	if ((stack == NULL) || (*stack == NULL) || ((*stack)->next) == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		if (*stack)
+			free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	(void) line_number;
+
+	store = (*stack)->next->n;
+	(*stack)->next->n = (*stack)->n;
+	(*stack)->n = store;
+}
+
+/**
+ * _add - swaps the data in two nodes
+ * @stack: pointer to a stack_t
+ * @line_number: line number
+ */
+void _add(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || (*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		if (*stack)
+			free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n = ((*stack)->next->n) + ((*stack)->n);
+	_pop(stack, line_number);
+}
+
+/**
+ * _sub - swaps the data in two nodes
+ * @stack: pointer to a stack_t
+ * @line_number: line number
+ */
+void _sub(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || (*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+		if (*stack)
+			free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n = ((*stack)->next->n) - ((*stack)->n);
+	_pop(stack, line_number);
+}

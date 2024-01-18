@@ -1,3 +1,5 @@
+#define  _GNU_SOURCE
+#include <stdio.h>
 #include "monty.h"
 
 unsigned int line_number = 0;
@@ -66,4 +68,3 @@ void free_stack(stack_t **stack)
 		free(head->prev);
 	}
 }
-

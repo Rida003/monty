@@ -65,4 +65,3 @@ void is_valid(char **token, stack_t **stack);
 void free_stack(stack_t **stack);
 
 #endif
-
